@@ -1,0 +1,27 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  druid:
+    url: jdbc:mysql://192.168.1.136:3306/permission?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 1234
+    maxActive: 30
+    minIdle: 5
+    maxWait: 10000
+  mvc: #相当于视图解析器
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+  timeout: 3000

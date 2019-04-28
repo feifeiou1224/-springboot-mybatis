@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration>
+    <!--配置控制台输出-->
+    <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <!--样式-->
+            <pattern>
+                %d - %msg%n
+            </pattern>
+        </layout>
+    </appender>
+    <!--因为每天一个日志，所以是滚动日志输出-->
+    <appender name="fileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--一般项目中会把info与error分开
+            error是查找错误用
+            info一般是调优改进用
+        -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <!--因为error比info级别高，所以配置info日志中过滤掉error-->
+            <level>ERROR</level>
+            <!--匹配上error就过滤-->
+            <onMatch>DENY</onMatch>
+            <!--其他就接受-->
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
+        <!--样式-->
+        <encoder>
+            <pattern>
+                %msg%n
+            </pattern>
+        </encoder>
+        <!--滚动策略  默认每天-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--路径-->
+            <fileNamePattern>D://demo//log//info.%d.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+
+    <appender name="fileErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <encoder>
+            <pattern>
+                %msg%n
+            </pattern>
+        </encoder>
+        <!--滚动策略-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--路径-->
+            <fileNamePattern>D://demo//log//error.%d.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+    <!--表示根目录 意思所有日志都满足-->
+    <root level="info">
+        <appender-ref ref="consoleLog" />
+        <appender-ref ref="fileInfoLog" />
+        <appender-ref ref="fileErrorLog" />
+    </root>
+
+</configuration>
