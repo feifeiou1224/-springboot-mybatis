@@ -17,7 +17,6 @@ spring:
       prefix: /WEB-INF/views/
       suffix: .jsp
 
-
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
 

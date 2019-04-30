@@ -23,25 +23,4 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
-  <!-- loginFilter -->
-  <filter>
-    <filter-name>loginFilter</filter-name>
-    <filter-class>com.oyf.filter.LoginFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>loginFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
-
-  <!-- aclFilter -->
-  <filter>
-    <filter-name>aclFilter</filter-name>
-    <filter-class>com.oyf.filter.AclFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>aclFilter</filter-name>
-    <url-pattern>/sys/*</url-pattern>
-  </filter-mapping>
-
-
 </web-app>
